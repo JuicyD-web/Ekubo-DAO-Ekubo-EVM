@@ -66,5 +66,4 @@ title = "Ekubo Protocol EVM"
 ignore = ["test/**"]
 
 [etherscan]
-api_key =   "${ETHERSCAN_API_KEY}"  # Etherscan API Key from environment variable
-chain = "mainnet"               # Default chain for verification
+api_key = { mainnet = "${ETHERSCAN_API_KEY}" }

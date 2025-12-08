@@ -28,7 +28,7 @@ jobs:
 
       - name: Upload compliance check results
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: compliance-check-results
           path: .
