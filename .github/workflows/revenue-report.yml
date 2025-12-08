@@ -1,0 +1,40 @@
+name: Automated Revenue Reporting
+
+on:
+  schedule:
+    - cron: '0 0 1,15 * *' # Runs on the 1st and 15th of every month
+  workflow_dispatch:
+
+jobs:
+  revenue-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install web3 pandas
+
+      - name: Run revenue tracking script
+        run: |
+          python revenue/automation/revenue_tracker.py
+
+      - name: Upload revenue report
+        uses: actions/upload-artifact@v3
+        with:
+          name: revenue-report
+          path: revenue/reports/latest_report.md
+
+      - name: Create GitHub Issue for Revenue Report
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: "Automated Revenue Report - ${{ github.run_id }}"
+          content-filepath: revenue/reports/latest_report.md
+          labels: revenue-report

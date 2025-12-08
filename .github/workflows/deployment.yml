@@ -1,0 +1,53 @@
+name: Deployment Automation
+
+on:
+  workflow_dispatch:
+    inputs:
+      network:
+        description: 'Target network (e.g., mainnet, sepolia)'
+        required: true
+        default: 'sepolia'
+      private_key:
+        description: 'Private key for deployment (use GitHub secrets)'
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+
+      - name: Build contracts
+        run: forge build
+
+      - name: Deploy contracts
+        env:
+          RPC_URL: ${{ secrets.RPC_URL }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        run: |
+          forge script script/Deploy.s.sol \
+            --rpc-url $RPC_URL \
+            --private-key $PRIVATE_KEY \
+            --broadcast
+
+      - name: Verify contracts
+        env:
+          ETHERSCAN_KEY: ${{ secrets.ETHERSCAN_KEY }}
+        run: |
+          # Add verification commands as needed, e.g.:
+          # forge verify-contract --chain-id 1 --etherscan-api-key $ETHERSCAN_KEY CONTRACT_ADDRESS src/Contract.sol:ContractName
+
+      - name: Record deployment
+        run: |
+          echo "Deployment completed on ${{ github.event.inputs.network }} at $(date)" >> deployment_log.txt
+
+      - name: Upload deployment log
+        uses: actions/upload-artifact@v3
+        with:
+          name: deployment-log
+          path: deployment_log.txt

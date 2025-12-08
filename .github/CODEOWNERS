@@ -1,0 +1,10 @@
+# CODEOWNERS file for Ekubo Protocol EVM
+
+*       aksels-laivenieks
+src/*   aksels-laivenieks
+test/*  aksels-laivenieks
+docs/*  aksels-laivenieks
+financial/* aksels-laivenieks
+governance/* aksels-laivenieks
+legal/* aksels-laivenieks
+revenue/* aksels-laivenieks

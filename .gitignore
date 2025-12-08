@@ -1,0 +1,57 @@
+# Foundry
+cache/
+out/
+broadcast/
+
+# Coverage reports
+coverage_report.txt
+coverage_report_*.txt
+lcov.info
+coverage/
+coverage_html/
+
+# Size reports
+size_report.txt
+size_report_*.txt
+
+# Verification artifacts
+*.log
+
+# Test artifacts
+*.swp
+*.swo
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.egg-info/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+*.tgz
+
+# Temporary files
+tmp/
+temp/
+*.tmp

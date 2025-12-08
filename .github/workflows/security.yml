@@ -1,0 +1,19 @@
+security:
+  contact:
+    email: aksels.laivenieks@outlook.com
+    github: Ekubo-DAO/Ekubo-EVM
+    policy: https://github.com/Ekubo-DAO/Ekubo-EVM/security/policy
+  advisories:
+    url: https://github.com/Ekubo-DAO/Ekubo-EVM/security/advisories
+  scanning:
+    tools:
+      - name: Slither
+        url: https://github.com/crytic/slither
+      - name: Foundry
+        url: https://book.getfoundry.sh/
+      - name: CodeQL
+        url: https://github.com/github/codeql
+  reporting:
+    instructions: |
+      Please report security vulnerabilities via email or GitHub Security Advisories.
+      Do not disclose vulnerabilities publicly until they are resolved.
