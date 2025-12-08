@@ -33,7 +33,7 @@ jobs:
           path: revenue/reports/latest_report.md
 
       - name: Create GitHub Issue for Revenue Report
-        uses: peter-evans/create-issue-from-file@v4
+        uses: peter-evans/create-issue-from-file@v6
         with:
           title: "Automated Revenue Report - ${{ github.run_id }}"
           content-filepath: revenue/reports/latest_report.md
