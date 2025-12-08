@@ -66,4 +66,4 @@ title = "Ekubo Protocol EVM"
 ignore = ["test/**"]
 
 [etherscan]
-api_key = { mainnet = "${ETHERSCAN_API_KEY}" }
+api_key = { key = "${ETHERSCAN_API_KEY}" }
