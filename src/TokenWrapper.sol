@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: ekubo-license-v1.eth
 // Copyright (c) 2025 JuicyD-web
 // Ekubo Protocol - Licensed under Ekubo DAO Shared Revenue License 1.0
-pragma solidity ^0.8.30;
+pragma solidity ^0.8.24;
 
 import {IERC20} from "forge-std/interfaces/IERC20.sol";
 import {SafeCastLib} from "solady/utils/SafeCastLib.sol";
@@ -55,10 +55,10 @@ contract TokenWrapper is UsesCore, IERC20, BaseForwardee {
 
     /// @notice Transient balance for the Core contract
     /// @dev Core never actually holds a real balance of this token, we just use this transient balance to enable low cost payments to core
-    uint256 private transient coreBalance;
+    uint256 private coreBalance;
 
     /// @inheritdoc IERC20
-    /// @dev Returns the transient balance for Core contract, otherwise returns stored balance
+    /// @dev Returns the balance for Core contract, otherwise returns stored balance
     function balanceOf(address account) external view returns (uint256) {
         if (account == address(CORE)) return coreBalance;
         return _balanceOf[account];

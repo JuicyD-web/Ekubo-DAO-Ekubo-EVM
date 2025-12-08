@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.30;
+pragma solidity ^0.8.24;
 
 uint256 constant MAX_NUM_VALID_TIMES = 256;
 int128 constant MAX_ABS_VALUE_SALE_RATE_DELTA = type(int128).max;

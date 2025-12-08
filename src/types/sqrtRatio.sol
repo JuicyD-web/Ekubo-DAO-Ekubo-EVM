@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: ekubo-license-v1.eth
 // Copyright (c) 2025 JuicyD-web
 // Ekubo Protocol - Licensed under Ekubo DAO Shared Revenue License 1.0
-pragma solidity ^0.8.30;
+pragma solidity ^0.8.24;
 
 // A dynamic fixed point number (a la floating point) that stores a shifting 94 bit view of the underlying fixed point value,
 //  based on the most significant bits (mantissa)

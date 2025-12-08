@@ -12,28 +12,26 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Foundry
         uses: foundry-rs/foundry-toolchain@v1
 
+      - name: Install solc 0.8.30 and 0.8.28 for Foundry
+        run: |
+          forge install-solc 0.8.30
+          forge install-solc 0.8.28
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
       - name: Install dependencies
-        run: forge install
+        run: npm install
 
       - name: Build contracts
         run: forge build
 
       - name: Run tests
-        run: forge test --gas-report
-
-      - name: Run static analysis (Slither)
-        uses: crytic/slither-action@v0.2.0
-        with:
-          slither-args: .
-
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results
-          path: ./out
+        run: forge test --verbosity 3

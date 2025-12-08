@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.30;
+pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
 import {tickToSqrtRatio, sqrtRatioToTick} from "../src/math/ticks.sol";
