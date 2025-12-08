@@ -27,7 +27,7 @@ jobs:
         run: forge test --gas-report
 
       - name: Run static analysis (Slither)
-        uses: crytic/slither-action@v0.2.0
+        uses: crytic/slither-action@v0.4.1
         with:
           slither-args: .
 
