@@ -18,6 +18,7 @@ Environment Variables:
 import os
 import sys
 import json
+import csv
 import argparse
 from datetime import datetime
 from typing import List, Dict, Any
@@ -157,17 +158,19 @@ class ForkMonitor:
             print("No forks found.")
             return
         
-        # Print header
+        # Define headers
         headers = ["owner", "repo_name", "full_name", "url", "created_at", "updated_at", 
                    "stars", "watchers", "forks", "open_issues", "private", "description"]
-        print(",".join(headers))
         
-        # Print rows
+        # Use csv.writer for proper escaping
+        writer = csv.DictWriter(sys.stdout, fieldnames=headers)
+        writer.writeheader()
+        
+        # Write rows with proper CSV escaping
         for fork in forks:
-            row = [str(fork.get(h, "")) for h in headers]
-            # Escape quotes in description
-            row[-1] = f'"{row[-1].replace(chr(34), chr(34)+chr(34))}"'
-            print(",".join(row))
+            # Create row dict with all fields
+            row = {h: str(fork.get(h, "")) for h in headers}
+            writer.writerow(row)
 
 
 def main():
