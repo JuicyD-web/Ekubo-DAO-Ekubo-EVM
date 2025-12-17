@@ -15,6 +15,7 @@ This directory contains automated verification scripts to ensure the Ekubo Proto
 - **`check_coverage.sh`** - Verifies test coverage meets 80% threshold
 - **`check_sizes.sh`** - Verifies all contracts are within 24kb limit
 - **`verify_all.sh`** - Runs all verification checks in sequence
+- **`view_forks.sh`** - Quick view of repository forks using curl and jq
 
 ### Windows
 
@@ -24,6 +25,7 @@ This directory contains automated verification scripts to ensure the Ekubo Proto
 ### Python
 
 - **`track_revenue.py`** - Automated revenue tracking from on-chain events
+- **`monitor_forks.py`** - Monitor and list all repository forks from GitHub
 
 ## Usage
 
@@ -153,6 +155,61 @@ All scripts generate timestamped reports:
 - PowerShell 5.1+ (for .ps1 scripts)
 - Python 3.8+ (for revenue tracking)
 - bc (for bash floating point math)
+
+## Fork Monitoring
+
+### Track Repository Forks
+
+Monitor who has forked the repository for license compliance:
+
+**Quick View (Bash):**
+```bash
+# Basic view (no token required, but limited)
+./scripts/view_forks.sh
+
+# With GitHub token for higher limits
+./scripts/view_forks.sh YOUR_GITHUB_TOKEN
+
+# Or using environment variable
+export GITHUB_TOKEN="your_github_token"
+./scripts/view_forks.sh
+```
+
+**Detailed Analysis (Python):**
+```bash
+# Install dependencies
+pip install requests tabulate
+
+# List all forks (basic)
+python scripts/monitor_forks.py
+
+# Use GitHub token for higher rate limits
+export GITHUB_TOKEN="your_github_token"
+python scripts/monitor_forks.py
+
+# Output as JSON
+python scripts/monitor_forks.py --output json
+
+# Output as CSV
+python scripts/monitor_forks.py --output csv > forks.csv
+```
+
+**Features:**
+- Lists all public forks with owner, stars, creation date
+- Shows fork statistics
+- Supports multiple output formats (table, JSON, CSV)
+- Respects GitHub API rate limits
+- Works with or without GitHub token (token recommended)
+
+**Use Cases:**
+- License compliance monitoring
+- Identify derivative projects
+- Track community engagement
+- Export fork data for analysis
+
+See [FORKS_REGISTRY.md](../governance/FORKS_REGISTRY.md) for more information.
+
+---
 
 ## Support
 

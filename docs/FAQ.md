@@ -60,6 +60,19 @@ A: Users and operators must comply with local laws. See [REGULATORY_COMPLIANCE.m
 
 ---
 
+## Repository & Forks
+
+**Q: How can I see who has forked this repository?**  
+A: Visit the [GitHub forks page](https://github.com/JuicyD-web/Ekubo-DAO-Ekubo-EVM/network/members) or run `python scripts/monitor_forks.py` to get a detailed list. See [FORKS_REGISTRY.md](../governance/FORKS_REGISTRY.md) for more information.
+
+**Q: Do I need to register my fork?**  
+A: Yes, if you plan to deploy or use the code in production. Registration is required for license compliance. See [FORKS_REGISTRY.md](../governance/FORKS_REGISTRY.md) for registration instructions.
+
+**Q: What if I just forked for learning purposes?**  
+A: Development and testing forks should still be registered as "Development/Testing Only" for proper tracking, but don't require revenue sharing until production deployment.
+
+---
+
 ## Support
 
 **Q: How can I get help?**  
