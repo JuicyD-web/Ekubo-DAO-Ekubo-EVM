@@ -427,6 +427,19 @@ We welcome contributions! However, please note:
 - **Discord:** Coming soon
 - **Forum:** Coming soon
 
+### 📋 Repository Forks & Derivatives
+
+To view who has forked or copied this repository:
+
+1. **View on GitHub:** Visit the [repository network graph](https://github.com/JuicyD-web/Ekubo-DAO-Ekubo-EVM/network/members) to see all forks
+2. **Fork Count:** The fork count is displayed at the top of the repository page
+3. **Track Derivatives:** See [FORKS_REGISTRY.md](./governance/FORKS_REGISTRY.md) for registered derivative deployments
+
+**Important for Licensees:**
+- All forks and derivatives must comply with the license terms
+- Revenue sharing applies to all deployments, including forks
+- See [DERIVATIVE_COMPLIANCE.md](./DERIVATIVE_COMPLIANCE.md) for requirements
+
 ---
 
 ## 📜 License
