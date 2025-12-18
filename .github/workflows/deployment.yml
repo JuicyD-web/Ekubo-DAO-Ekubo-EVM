@@ -47,7 +47,7 @@ jobs:
           echo "Deployment completed on ${{ github.event.inputs.network }} at $(date)" >> deployment_log.txt
 
       - name: Upload deployment log
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v6
         with:
           name: deployment-log
           path: deployment_log.txt
