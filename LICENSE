@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Ekubo DAO Shared Revenue License 1.0
 (“ekubo-license-v1.eth”)
 
@@ -45,7 +44,6 @@ TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL EKUBO OR ITS CONTRIBUT
 7.2 “Royalty Bearing Work” means any smart contract or other work of authorship that is derived from, based on, or incorporates any portion of the Licensed Work or its Application Binary Interface (ABI), regardless of the blockchain on which it is deployed. 
 
 7.3 “Designated Address” means any on-chain address (or smart contract) or Ethereum Name Service (ENS) name, that is designated by Ekubo DAO to receive Protocol Revenue Share payments.
-=======
 MIT License
 
 Copyright (c) 2025 JuicyD-web
@@ -67,4 +65,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
->>>>>>> 4683e57b5df06622d5282f1c01d366b96fab6074
