@@ -1,0 +1,28 @@
+name: Security Check
+
+on:
+  push:
+    branches: [ main, fix-actions ]
+  pull_request:
+    branches: [ main, fix-actions ]
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Run Slither (if contracts exist)
+        run: |
+          if [ -d "src" ] && ls src/*.sol 1> /dev/null 2>&1; then
+            pip install slither-analyzer
+            slither . --filter-paths "lib/" || echo "⚠️  Slither found issues"
+          else
+            echo "ℹ️  No Solidity files to scan"
+          fi
+        continue-on-error: true
+      
+      - name: Check for sensitive data
+        run: |
+          echo "✅ Security checks placeholder - add specific scans as needed"

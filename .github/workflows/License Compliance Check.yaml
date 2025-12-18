@@ -1,0 +1,43 @@
+name: License Compliance Check
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  schedule:
+    - cron: '0 3 * * 1'
+
+jobs:
+  compliance-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for license files
+        run: |
+          MISSING=""
+          [ -f LICENSE ] || MISSING="${MISSING}LICENSE "
+          [ -f COPYRIGHT.md ] || MISSING="${MISSING}COPYRIGHT.md "
+          [ -f THIRD_PARTY_LICENSES.md ] || MISSING="${MISSING}THIRD_PARTY_LICENSES.md "
+          
+          if [ -n "$MISSING" ]; then
+            echo "❌ Missing files: $MISSING"
+            exit 1
+          fi
+          echo "✅ All license files present"
+
+      - name: Scan for license headers in source files
+        run: |
+          if [ -d "src" ]; then
+            if grep -r "Ekubo DAO" src/ --include="*.sol" -q; then
+              echo "✅ License headers found in source files"
+            else
+              echo "⚠️  No 'Ekubo DAO' headers found in .sol files"
+              exit 1
+            fi
+          else
+            echo "⚠️  src/ directory not found, skipping header check"
+          fi
