@@ -27,7 +27,7 @@ jobs:
           python revenue/automation/revenue_tracker.py
 
       - name: Upload revenue report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v6
         with:
           name: revenue-report
           path: revenue/reports/latest_report.md
