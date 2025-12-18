@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: ekubo-license-v1.eth
 // Copyright (c) 2025 JuicyD-web
 // Ekubo Protocol - Licensed under Ekubo DAO Shared Revenue License 1.0
-pragma solidity ^0.8.30;
+pragma solidity ^0.8.24;
 
 /// @notice Order configuration packed into a single bytes32
 /// @dev Contains fee (8 bytes), isToken1 (1 byte), padding (7 bytes), start time (8 bytes), and end time (8 bytes)

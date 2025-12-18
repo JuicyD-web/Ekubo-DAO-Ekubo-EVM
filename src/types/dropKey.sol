@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: ekubo-license-v1.eth
 // Copyright (c) 2025 JuicyD-web
 // Ekubo Protocol - Licensed under Ekubo DAO Shared Revenue License 1.0
-pragma solidity ^0.8.30;
+pragma solidity ^0.8.24;
 
 /// @notice A drop is specified by an owner, token and a root
 /// @dev The owner can reclaim the drop token at any time

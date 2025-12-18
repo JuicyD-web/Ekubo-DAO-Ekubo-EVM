@@ -1,0 +1,59 @@
+name: Test & Coverage
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+
+      - name: Install dependencies
+        run: forge install
+
+      - name: Run tests
+        run: forge test -vvv
+
+      - name: Generate coverage report
+        run: |
+          forge coverage --report lcov > coverage.txt 2>&1 || true
+          forge coverage --report summary | tee coverage_summary.txt
+
+      - name: Check coverage threshold (80%)
+        run: |
+          # Extract coverage percentage from summary
+          COVERAGE=$(grep -oP '(?<=Overall coverage: )\d+\.\d+' coverage_summary.txt || echo "0")
+          echo "Coverage: ${COVERAGE}%"
+          
+          # Compare using awk instead of bc
+          if awk -v cov="$COVERAGE" 'BEGIN {exit !(cov >= 80)}'; then
+            echo "✅ Coverage ${COVERAGE}% meets 80% threshold"
+          else
+            echo "❌ Coverage ${COVERAGE}% below 80% threshold"
+            exit 1
+          fi
+
+      - name: Check contract sizes (24kb limit)
+        run: |
+          forge build --sizes | tee sizes.txt
+          # Check if any contract exceeds 24576 bytes (24kb)
+          if grep -E '^\s*[^│]+│[^│]+│\s*([2][5-9]|[3-9][0-9])[0-9]{3}\s*│' sizes.txt; then
+            echo "❌ Some contracts exceed 24kb limit"
+            exit 1
+          else
+            echo "✅ All contracts within 24kb size limit"
+          fi
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: |
+            coverage.txt
+            coverage_summary.txt

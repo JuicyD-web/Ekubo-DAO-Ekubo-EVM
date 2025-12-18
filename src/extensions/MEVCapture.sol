@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: ekubo-license-v1.eth
 // Copyright (c) 2025 JuicyD-web
 // Ekubo Protocol - Licensed under Ekubo DAO Shared Revenue License 1.0
-pragma solidity ^0.8.28;
+pragma solidity ^0.8.24;
 
 import {ICore, PoolKey, PositionId, CallPoints} from "../interfaces/ICore.sol";
 import {IMEVCapture} from "../interfaces/extensions/IMEVCapture.sol";

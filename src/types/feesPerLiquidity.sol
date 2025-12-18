@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: ekubo-license-v1.eth
 // Copyright (c) 2025 JuicyD-web
 // Ekubo Protocol - Licensed under Ekubo DAO Shared Revenue License 1.0
-pragma solidity ^0.8.30;
+pragma solidity ^0.8.24;
 
 // The total fees per liquidity for each token.
 // Since these are always read together we put them in a struct, even though they cannot be packed.

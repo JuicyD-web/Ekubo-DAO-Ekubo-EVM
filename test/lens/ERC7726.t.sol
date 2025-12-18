@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: ekubo-license-v1.eth
 // Copyright (c) 2025 JuicyD-web
 // Ekubo Protocol - Licensed under Ekubo DAO Shared Revenue License 1.0
-pragma solidity ^0.8.30;
+pragma solidity ^0.8.24;
 
 import {BaseOracleTest} from "../extensions/Oracle.t.sol";
 import {ERC7726, IERC7726_ETH_ADDRESS, IERC7726_BTC_ADDRESS, IERC7726_USD_ADDRESS} from "../../src/lens/ERC7726.sol";
